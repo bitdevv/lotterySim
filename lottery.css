@@ -1,5 +1,11 @@
+* {
+    box-sizing: border-box;
+  }
+
 body{
     background-color: gray;
+    margin: auto;
+    max-width: 440px;
 }
 
 
@@ -8,7 +14,7 @@ body{
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .number {
@@ -29,13 +35,8 @@ label {
     margin-bottom: 10px;
 }
 
-input[type='number'] {
-   width: auto;
-    margin: auto;
-}
 
 button {
-    margin-top: 20px;
     padding: 10px;
     background-color: #4CAF50;
     color: white;
@@ -57,29 +58,21 @@ button:hover {
 .stats-container {
     margin: 20px;
     padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
     border: 2px solid #ccc;
     border-radius: 5px;
-    justify-content: space-between;
+    text-align: center;
 }
 
-.stats-container>div {
-  
-    flex: 1 1; /*grow | shrink | basis */
-    
-}
 
 
 .stats-container > div {
-
+    flex-grow: 1;
+    width: 30%;
     border: solid black;
-    padding: 1em;
 }
 
 .stats-container > div > div {
     font-weight: bold;
-
     margin-left: 10px;
 }
 
@@ -91,4 +84,15 @@ button:hover {
     border: 1px solid #ddd;
     border-radius: 5px;
     text-align: center;
+  }
+
+  #auto-generator{
+    display: flex;
+  }
+
+  #generate-btn{
+    margin: auto;
+    margin-bottom: 0.5em;
+    padding: auto;
+
   }
