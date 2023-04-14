@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lottery Simulator</title>
+	<link rel="stylesheet" type="text/css" href="lottery.css">
+</head>
+<body>
+    <div id="container" class="container">
+      <label>Main Numbers:</label>
+      <select id="main1"></select>
+      <select id="main2"></select>
+      <select id="main3"></select>
+      <select id="main4"></select>
+      <select id="main5"></select>
+      <label>Extra Numbers:</label>
+      <select id="extra1"></select>
+      <select id="extra2"></select>
+      <button id="generate">Select new random numbers</button>
+    </div>
+    
+    <p>Lottery</p>
+    <div id="stats-container" class="container stats-container">
+        <div>Games played: <div id="gamesPlayed">0</div></div>
+        
+        
+        <div>Not winning: <div id="hitsNA">0</div></div>
+        <div>0+0: <div id="hitsExtraLame">0</div></div>
+        <div>2+1: <div id="hits21">0</div></div>
+        <div>1+2: <div id="hits12">0</div></div>
+        <div>3+0: <div id="hits30">0</div></div>
+        <div>3+1: <div id="hits31">0</div></div>
+        <div>2+2: <div id="hits22">0</div></div>
+        <div>4+0: <div id="hits40">0</div></div>
+        <div>3+2: <div id="hits32">0</div></div>
+        <div>4+1: <div id="hits41">0</div></div>
+        <div>4+2: <div id="hits42">0</div></div>
+        <div>5+0: <div id="hits50">0</div></div>
+        <div>5+1: <div id="hits51">0</div></div>
+        <div>5+2: <div id="hits52">0</div></div>
+
+    </div>
+
+
+    <button id="generate-btn">Play lottery once</button>
+
+    <div id="auto-generator">
+        <input type="number" id="auto-gen-amount" value="10"  style="width: 200px;">
+        <button id="start-auto-gen">Play lottery selected amount of times </button>
+
+    </div>
+
+ <div id="lottery-container" class="container">
+    <label>Main Numbers:</label>
+    <div class="number main" id="main1">0</div>
+    <div class="number main" id="main2">0</div>
+    <div class="number main" id="main3">0</div>
+    <div class="number main" id="main4">0</div>
+    <div class="number main" id="main5">0</div>
+    <label>Extra Numbers:</label>
+    <div class="number extra" id="extra1">0</div>
+    <div class="number extra" id="extra2">0</div>
+ </div>
+
+ <div class="container">
+    <div>These are the winning tickets:</div>
+ </div>
+    <script src="lottery.js"></script>
+  </body>
+  
+</html>
