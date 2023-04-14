@@ -1,3 +1,8 @@
+body{
+    background-color: gray;
+}
+
+
 .container {
     display: flex;
     flex-direction: row;
@@ -6,9 +11,18 @@
     margin-top: 50px;
 }
 
-.number{
-    margin: 1em;
-}
+.number {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 24px;
+  }
+  
 
 label {
     font-weight: bold;
@@ -16,8 +30,8 @@ label {
 }
 
 input[type='number'] {
-    width: 50px;
-    margin-right: 5px;
+   width: auto;
+    margin: auto;
 }
 
 button {
@@ -35,20 +49,30 @@ button:hover {
 }
 
 .match {
-    color: #3E8E41;
-    
-    font-size: 2em;
+    background-color: #4CAF50;
+    color: #fff;
     font-weight: bold;
 }
 
 .stats-container {
     margin: 20px;
     padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
     border: 2px solid #ccc;
     border-radius: 5px;
+    justify-content: space-between;
 }
 
+.stats-container>div {
+  
+    flex: 1 1; /*grow | shrink | basis */
+    
+}
+
+
 .stats-container > div {
+
     border: solid black;
     padding: 1em;
 }
@@ -59,6 +83,12 @@ button:hover {
     margin-left: 10px;
 }
 
-.wide-input{
-    width: 200px;
-}
+
+#auto-gen-amount {
+    padding: 10px;
+    font-size: 18px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+  }

@@ -5,49 +5,51 @@
 	<link rel="stylesheet" type="text/css" href="lottery.css">
 </head>
 <body>
-    <div id="container" class="container">
-      <label>Main Numbers:</label>
-      <select id="main1"></select>
-      <select id="main2"></select>
-      <select id="main3"></select>
-      <select id="main4"></select>
-      <select id="main5"></select>
-      <label>Extra Numbers:</label>
-      <select id="extra1"></select>
-      <select id="extra2"></select>
-      <button id="generate">Select new random numbers</button>
+<div class="player-selection">
+
+    <div class="title" >Select Your Ticket Numbers</div>
+    <div id="container" class="container player-numbers">
+        <label>Main Numbers:</label>
+        <select class="select-number" id="main1"></select>
+        <select class="select-number" id="main2"></select>
+        <select class="select-number" id="main3"></select>
+        <select class="select-number" id="main4"></select>
+        <select class="select-number" id="main5"></select>
+        <label>Extra Numbers:</label>
+        <select class="select-number" id="extra1"></select>
+      <select class="select-number" id="extra2"></select>
+      <button class="button" id="generate">Select new random numbers</button>
     </div>
-    
-    <p>Lottery</p>
-    <div id="stats-container" class="container stats-container">
-        <div>Games played: <div id="gamesPlayed">0</div></div>
-        
-        
+</div>
+    <p>Wins</p>
+    <div id="stats-container" class="stats-container">
+        <div class="match-title" >2+1: <div class="match-value"  id="hits21">0</div></div>
+        <div class="match-title" >1+2: <div class="match-value"  id="hits12">0</div></div>
+        <div class="match-title" >3+0: <div class="match-value"  id="hits30">0</div></div>
+        <div class="match-title" >3+1: <div class="match-value"  id="hits31">0</div></div>
+        <div class="match-title" >2+2: <div class="match-value"  id="hits22">0</div></div>
+        <div class="match-title" >4+0: <div class="match-value"  id="hits40">0</div></div>
+        <div class="match-title" >3+2: <div class="match-value"  id="hits32">0</div></div>
+        <div class="match-title" >4+1: <div class="match-value"  id="hits41">0</div></div>
+        <div class="match-title" >4+2: <div class="match-value"  id="hits42">0</div></div>
+        <div class="match-title" >5+0: <div class="match-value"  id="hits50">0</div></div>
+        <div class="match-title" >5+1: <div class="match-value"  id="hits51">0</div></div>
+        <div class="match-title" >5+2: <div class="match-value"  id="hits52">0</div></div>
+        <div class="match-title" >0+0: <div class="match-value"  id="hitsExtraLame">0</div></div>
         <div>Not winning: <div id="hitsNA">0</div></div>
-        <div>0+0: <div id="hitsExtraLame">0</div></div>
-        <div>2+1: <div id="hits21">0</div></div>
-        <div>1+2: <div id="hits12">0</div></div>
-        <div>3+0: <div id="hits30">0</div></div>
-        <div>3+1: <div id="hits31">0</div></div>
-        <div>2+2: <div id="hits22">0</div></div>
-        <div>4+0: <div id="hits40">0</div></div>
-        <div>3+2: <div id="hits32">0</div></div>
-        <div>4+1: <div id="hits41">0</div></div>
-        <div>4+2: <div id="hits42">0</div></div>
-        <div>5+0: <div id="hits50">0</div></div>
-        <div>5+1: <div id="hits51">0</div></div>
-        <div>5+2: <div id="hits52">0</div></div>
+        <div>Games played: <div id="gamesPlayed">0</div></div>
+    </div>
+
+    <div class="container">
+        <button id="generate-btn">Play lottery once</button>
+    
+        <div id="auto-generator">
+            <input type="number" id="auto-gen-amount" value="10"  style="width: 200px;">
+            <button id="start-auto-gen">Play lottery selected amount of times </button>
+        </div>
 
     </div>
 
-
-    <button id="generate-btn">Play lottery once</button>
-
-    <div id="auto-generator">
-        <input type="number" id="auto-gen-amount" value="10"  style="width: 200px;">
-        <button id="start-auto-gen">Play lottery selected amount of times </button>
-
-    </div>
 
  <div id="lottery-container" class="container">
     <label>Main Numbers:</label>

@@ -141,11 +141,8 @@ function loosiLotoNumbrid() {
         if(mainMatches+extraMatches == 0){
             statsContainer.querySelector("#hitsExtraLame").innerText++;
 
-        }else{
-            statsContainer.querySelector("#hitsNA").innerText++;
-
         }
-
+            statsContainer.querySelector("#hitsNA").innerText++;
     }
 
 }
