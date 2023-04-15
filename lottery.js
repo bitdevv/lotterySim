@@ -7,7 +7,8 @@ var statsContainer = document.getElementById("stats-container");
 var gamesPlayedDiv = document.getElementById("gamesPlayed");
 var userSelectedMainNumbers = [];
 var userSelectedExtraNumbers = [];
-
+var noMatches = 0;
+var notWinning = 0;
 
 
 const totalWinningsDiv = document.getElementById("total-winnings");
@@ -171,9 +172,17 @@ function loosiLotoNumbrid(updateDOM) {
         //addcontainerAsLog();
     } else {
         if (mainMatches + extraMatches == 0) {
-            statsContainer.querySelector("#hitsExtraLame").innerText++;
+            if(updateDOM){
+                statsContainer.querySelector("#hitsExtraLame").innerText++;
+            }else{
+                noMatches++;
+            }
         }
-        statsContainer.querySelector("#hitsNA").innerText++;
+        if(updateDOM){
+            statsContainer.querySelector("#hitsNA").innerText++;
+        }else{
+            notWinning++;
+        }
     }
     return 0;
     
@@ -190,8 +199,7 @@ loosiNumbreidOnceButton.addEventListener('click', function () {
     updateMonetaryDom(winnings, 1);
 
     saveValues();
-    console.log("user main", userSelectedMainNumbers)
-    console.log("user extra", userSelectedExtraNumbers)
+
 });
 
 
@@ -201,11 +209,17 @@ buttonElement.addEventListener("click", function () {
     const start = performance.now();
     const numberOfGames = inputElement.value;
     let winnings = 0;
+    noMatches = 0;
+    notWinning = 0;
     for (let index = 0; index < numberOfGames-1; index++) {
         winnings += loosiLotoNumbrid(false);
     }
     winnings += loosiLotoNumbrid(true);
     updateMonetaryDom(winnings, numberOfGames)
+
+    statsContainer.querySelector("#hitsExtraLame").innerText=+statsContainer.querySelector("#hitsExtraLame").innerText+noMatches;
+    statsContainer.querySelector("#hitsNA").innerText=+statsContainer.querySelector("#hitsNA").innerText+notWinning;
+
     saveValues();
     
     
