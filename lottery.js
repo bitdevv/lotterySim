@@ -131,7 +131,7 @@ function loosiLotoNumbrid(updateDOM) {
             if (updateDOM) {
                 div.classList.add("match");
             }
-            match = true;
+       
             mainMatches++;
         } else if (updateDOM) {
             div.classList.remove("match")
@@ -151,7 +151,7 @@ function loosiLotoNumbrid(updateDOM) {
             if (updateDOM) {
                 div.classList.add("match");
             }
-            match = true;
+           
             extraMatches++;
         } else if (updateDOM) {
             div.classList.remove("match")
