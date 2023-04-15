@@ -213,7 +213,7 @@ buttonElement.addEventListener("click", function () {
     
     const end = performance.now();
     const duration = end - start;
-    console.log(`Function took ${duration} milliseconds to run ${amount} times`);
+    console.log(`Function took ${duration} milliseconds to run ${numberOfGames} times`);
 
 });
 
