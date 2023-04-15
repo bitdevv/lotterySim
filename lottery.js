@@ -7,11 +7,37 @@ var statsContainer = document.getElementById("stats-container");
 var gamesPlayedDiv = document.getElementById("gamesPlayed");
 var userSelectedMainNumbers = [];
 var userSelectedExtraNumbers = [];
+/* 
+<div>Total winnings €:    <div id="total-winnings">0</div></div>
+<div>Total ticket cost €: <div id="total-ticket-cost">0</div></div>
+<div>Net winnings €:      <div id="net-winnings">0</div></div> */
+
+
+const totalWinningsDiv = document.getElementById("total-winnings");
+const totalTicketCost = document.getElementById("total-ticket-cost");
+const netWinnings = document.getElementById("net-winnings");
 
 var gamesPlayed = 0;
 
 var mainRange = { min: 1, max: 50 };
 var extraRange = { min: 1, max: 12 };
+
+const monetaryData = {
+    'ticketCost': 2, 
+    '52':107469011,
+    '51': 764670,
+    '50': 143746,
+    '42': 7113,
+    '41': 420,
+    '32': 219,
+    '40': 134,
+    '22': 35,
+    '31': 25,
+    '30': 19,
+    '12': 17,
+    '21': 11
+}
+
 
 function generateRandomNumber(min, max, selectedNumbers) {
     var randomNum = 0;
@@ -64,17 +90,12 @@ window.onload = function () {
     var generateButton = document.getElementById("generate");
     generateButton.addEventListener("click", generateNumbers);
     generateNumbers();
+    loadValues();
 }
 
 
 
-const generateBtn = document.getElementById('generate-btn');
 
-generateBtn.addEventListener('click', function () {
-
-    loosiLotoNumbrid()
-
-});
 
 function addcontainerAsLog() {
     const originalContainer = document.getElementById('lottery-container');
@@ -91,7 +112,7 @@ function addcontainerAsLog() {
     document.body.appendChild(newContainer);
 }
 
-function loosiLotoNumbrid() {
+function loosiLotoNumbrid(updateDOM) {
 
     gamesPlayedDiv.innerText++;
     var selectedNumbers = [];
@@ -102,61 +123,167 @@ function loosiLotoNumbrid() {
 
     for (let i = 0; i < lotteryMainDivs.length; i++) {
         let div = lotteryMainDivs[i];
-        div.classList.remove("match")
+
+
         const randomNum = generateRandomNumber(mainRange.min, mainRange.max, selectedNumbers);
+
+        if (updateDOM) {
+            div.innerText = randomNum;
+        }
         if (userSelectedMainNumbers.indexOf(randomNum) !== -1) {
-            div.classList.add("match");
+            if (updateDOM) {
+                div.classList.add("match");
+            }
             match = true;
             mainMatches++;
+        } else if (updateDOM) {
+            div.classList.remove("match")
         }
-
-        
-        div.innerText = randomNum;
     }
+
 
     selectedNumbers = [];
     for (let i = 0; i < lotteryExtraDivs.length; i++) {
         let div = lotteryExtraDivs[i];
-        div.classList.remove("match")
         const randomNum = generateRandomNumber(extraRange.min, extraRange.max, selectedNumbers);
+
+        if (updateDOM) {
+            div.innerText = randomNum;
+        }
         if (userSelectedMainNumbers.indexOf(randomNum) !== -1) {
-            div.classList.add("match")
+            if (updateDOM) {
+                div.classList.add("match");
+            }
             match = true;
             extraMatches++;
+        } else if (updateDOM) {
+            div.classList.remove("match")
         }
-        lotteryExtraDivs[i].innerText = randomNum;
+        div.innerText = randomNum;
     }
 
-    let matchCode =  mainMatches + '' + extraMatches;
-    console.log( matchCode );
+    let matchCode = mainMatches + '' + extraMatches;
+    //console.log( matchCode );
 
     let div = statsContainer.querySelector("#hits" + matchCode);
 
-
-
-    if(div){
+    if (div) {
         div.innerText++;
-        addcontainerAsLog();
-    }else{
-        if(mainMatches+extraMatches == 0){
+        let winning = monetaryData[matchCode];
+        return winning;
+        //addcontainerAsLog();
+    } else {
+        if (mainMatches + extraMatches == 0) {
             statsContainer.querySelector("#hitsExtraLame").innerText++;
-
         }
-            statsContainer.querySelector("#hitsNA").innerText++;
+        statsContainer.querySelector("#hitsNA").innerText++;
     }
-
+    return 0;
+    
 }
 
-// Get the input element and the button element
+//get the input element for getting numbers once
+const loosiNumbreidOnceButton = document.getElementById('generate-btn');
+// Get the input element and the button element for getting numbers x amount of times
 const inputElement = document.getElementById("auto-gen-amount");
 const buttonElement = document.getElementById("start-auto-gen");
 
+loosiNumbreidOnceButton.addEventListener('click', function () {
+    let winnings = loosiLotoNumbrid(true);
+    updateMonetaryDom(winnings, 1);
+
+    saveValues();
+});
+
+
 // Add a click event listener to the button
-buttonElement.addEventListener("click", function() {
-  // Get the value from the input
-  const amount = inputElement.value;
-  for (let index = 0; index < amount; index++) {
-    loosiLotoNumbrid();
-  }
+buttonElement.addEventListener("click", function () {
+    // Get the value from the input
+    const start = performance.now();
+    const numberOfGames = inputElement.value;
+    let winnings = 0;
+    for (let index = 0; index < numberOfGames-1; index++) {
+        winnings += loosiLotoNumbrid(false);
+    }
+    winnings += loosiLotoNumbrid(true);
+    updateMonetaryDom(winnings, numberOfGames)
+    saveValues();
+    
+    
+    
+    const end = performance.now();
+    const duration = end - start;
+    console.log(`Function took ${duration} milliseconds to run ${amount} times`);
 
 });
+
+function updateMonetaryDom(winnings, gamesPlayed) {
+    if (winnings > 0) {
+        totalWinningsDiv.innerText = +totalWinningsDiv.innerText + winnings;
+    }
+    let gamesTicketCost = gamesPlayed * monetaryData.ticketCost;
+    totalTicketCost.innerText = +totalTicketCost.innerText + gamesTicketCost;
+    netWinnings.innerText = +netWinnings.innerText + winnings - gamesTicketCost;
+}
+
+//save and load
+
+// Save data to localStorage
+function saveValues() {
+    const selectNumbers = document.querySelectorAll('.select-number');
+    const statsValues = document.querySelectorAll('.match-value');
+    const hitsNA = document.getElementById('hitsNA').textContent;
+    const gamesPlayed = document.getElementById('gamesPlayed').textContent;
+
+
+    const data = {};
+
+    selectNumbers.forEach((select) => {
+        data[select.id] = select.value;
+    });
+
+    statsValues.forEach((stat) => {
+        data[stat.id] = stat.textContent;
+    });
+
+    data['hitsNA'] = hitsNA;
+    data['gamesPlayed'] = gamesPlayed;
+
+    data['total-winnings'] = totalWinningsDiv.textContent;
+    data['total-ticket-cost'] = totalTicketCost.textContent;
+    data['net-winnings'] = netWinnings.textContent;
+ 
+    localStorage.setItem('lotteryData', JSON.stringify(data));
+}
+
+// Load data from localStorage
+function loadValues() {
+    const data = JSON.parse(localStorage.getItem('lotteryData'));
+
+    if (data) {
+        const selectNumbers = document.querySelectorAll('.select-number');
+        const statsValues = document.querySelectorAll('.match-value');
+        const hitsNA = document.getElementById('hitsNA');
+        const gamesPlayed = document.getElementById('gamesPlayed');
+
+        selectNumbers.forEach((select) => {
+            select.value = data[select.id];
+        });
+
+        statsValues.forEach((stat) => {
+            stat.textContent = data[stat.id];
+        });
+
+        hitsNA.textContent = data['hitsNA'];
+        gamesPlayed.textContent = data['gamesPlayed'];
+
+        totalWinningsDiv.textContent = data['total-winnings'];
+        totalTicketCost.textContent = data['total-ticket-cost'];
+        netWinnings.textContent = data['net-winnings'];
+
+    }
+}
+
+  // Call the functions to save and load data
+
+

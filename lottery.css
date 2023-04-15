@@ -96,3 +96,54 @@ button:hover {
     padding: auto;
 
   }
+
+  table {
+    border-collapse: collapse;
+  }
+  
+  table td {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+  }
+  
+  table th {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+    background-color: #ccc;
+  }
+  
+  table td:nth-child(3):before {
+    content: "\20AC";
+    display: inline-block;
+    margin-right: 5px;
+  }
+
+  table td:nth-child(3) {
+    text-align: left;
+  }
+
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    font-size: 18px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #fff;
+    margin-right: 20px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  nav a:hover {
+    color: #ff5d5d;
+  }
+  
+  
