@@ -7,10 +7,7 @@ var statsContainer = document.getElementById("stats-container");
 var gamesPlayedDiv = document.getElementById("gamesPlayed");
 var userSelectedMainNumbers = [];
 var userSelectedExtraNumbers = [];
-/* 
-<div>Total winnings €:    <div id="total-winnings">0</div></div>
-<div>Total ticket cost €: <div id="total-ticket-cost">0</div></div>
-<div>Net winnings €:      <div id="net-winnings">0</div></div> */
+
 
 
 const totalWinningsDiv = document.getElementById("total-winnings");
@@ -150,7 +147,7 @@ function loosiLotoNumbrid(updateDOM) {
         if (updateDOM) {
             div.innerText = randomNum;
         }
-        if (userSelectedMainNumbers.indexOf(randomNum) !== -1) {
+        if (userSelectedExtraNumbers.indexOf(randomNum) !== -1) {
             if (updateDOM) {
                 div.classList.add("match");
             }
@@ -193,6 +190,8 @@ loosiNumbreidOnceButton.addEventListener('click', function () {
     updateMonetaryDom(winnings, 1);
 
     saveValues();
+    console.log("user main", userSelectedMainNumbers)
+    console.log("user extra", userSelectedExtraNumbers)
 });
 
 
@@ -266,8 +265,19 @@ function loadValues() {
         const hitsNA = document.getElementById('hitsNA');
         const gamesPlayed = document.getElementById('gamesPlayed');
 
+        userSelectedMainNumbers = [];
+        userSelectedExtraNumbers = [];
+
         selectNumbers.forEach((select) => {
-            select.value = data[select.id];
+            let value = data[select.id]
+            
+            select.value = value;
+            if(select.id == "extra1" || select.id == "extra2"){
+                userSelectedExtraNumbers.push(+value);
+            }else{
+                userSelectedMainNumbers.push(+value);
+            }
+            
         });
 
         statsValues.forEach((stat) => {
