@@ -114,7 +114,6 @@ function loosiLotoNumbrid(updateDOM) {
 
     gamesPlayedDiv.innerText++;
     var selectedNumbers = [];
-    let match = false;
 
     let mainMatches = 0;
     let extraMatches = 0;
@@ -226,7 +225,7 @@ buttonElement.addEventListener("click", function () {
     
     const end = performance.now();
     const duration = end - start;
-    console.log(`Function took ${duration} milliseconds to run ${numberOfGames} times`);
+    console.log(`Lottery took ${duration} milliseconds to run ${numberOfGames} times`);
 
 });
 
