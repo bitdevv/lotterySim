@@ -21,8 +21,8 @@ var mainRange = { min: 1, max: 50 };
 var extraRange = { min: 1, max: 12 };
 
 const monetaryData = {
-    'ticketCost': 2, 
-    '52':107469011,
+    'ticketCost': 2,
+    '52': 107469011,
     '51': 764670,
     '50': 143746,
     '42': 7113,
@@ -110,6 +110,8 @@ function addcontainerAsLog() {
     document.body.appendChild(newContainer);
 }
 
+const zeroHits = statsContainer.querySelector("#hitsExtraLame");
+const hitsButNoWin = statsContainer.querySelector("#hitsNA");
 function loosiLotoNumbrid(updateDOM) {
 
     gamesPlayedDiv.innerText++;
@@ -122,7 +124,7 @@ function loosiLotoNumbrid(updateDOM) {
         let div = lotteryMainDivs[i];
 
 
-        const randomNum = generateRandomNumber(mainRange.min, mainRange.max, selectedNumbers);
+        let randomNum = generateRandomNumber(mainRange.min, mainRange.max, selectedNumbers);
 
         if (updateDOM) {
             div.innerText = randomNum;
@@ -131,7 +133,7 @@ function loosiLotoNumbrid(updateDOM) {
             if (updateDOM) {
                 div.classList.add("match");
             }
-       
+
             mainMatches++;
         } else if (updateDOM) {
             div.classList.remove("match")
@@ -142,7 +144,7 @@ function loosiLotoNumbrid(updateDOM) {
     selectedNumbers = [];
     for (let i = 0; i < lotteryExtraDivs.length; i++) {
         let div = lotteryExtraDivs[i];
-        const randomNum = generateRandomNumber(extraRange.min, extraRange.max, selectedNumbers);
+        let randomNum = generateRandomNumber(extraRange.min, extraRange.max, selectedNumbers);
 
         if (updateDOM) {
             div.innerText = randomNum;
@@ -151,7 +153,7 @@ function loosiLotoNumbrid(updateDOM) {
             if (updateDOM) {
                 div.classList.add("match");
             }
-           
+
             extraMatches++;
         } else if (updateDOM) {
             div.classList.remove("match")
@@ -171,20 +173,20 @@ function loosiLotoNumbrid(updateDOM) {
         //addcontainerAsLog();
     } else {
         if (mainMatches + extraMatches == 0) {
-            if(updateDOM){
-                statsContainer.querySelector("#hitsExtraLame").innerText++;
-            }else{
+            if (updateDOM) {
+                zeroHits.innerText++;
+            } else {
                 noMatches++;
             }
         }
-        if(updateDOM){
-            statsContainer.querySelector("#hitsNA").innerText++;
-        }else{
+        if (updateDOM) {
+            hitsButNoWin.innerText++;
+        } else {
             notWinning++;
         }
     }
     return 0;
-    
+
 }
 
 //get the input element for getting numbers once
@@ -203,31 +205,35 @@ loosiNumbreidOnceButton.addEventListener('click', function () {
 
 
 // Add a click event listener to the button
-buttonElement.addEventListener("click", function () {
+buttonElement.addEventListener("click", startMultipleLotteries);
+
+function startMultipleLotteries() {
     // Get the value from the input
     const start = performance.now();
     const numberOfGames = inputElement.value;
     let winnings = 0;
     noMatches = 0;
     notWinning = 0;
-    for (let index = 0; index < numberOfGames-1; index++) {
+    for (let index = 0; index < numberOfGames - 1; index++) {
         winnings += loosiLotoNumbrid(false);
     }
     winnings += loosiLotoNumbrid(true);
     updateMonetaryDom(winnings, numberOfGames)
 
-    statsContainer.querySelector("#hitsExtraLame").innerText=+statsContainer.querySelector("#hitsExtraLame").innerText+noMatches;
-    statsContainer.querySelector("#hitsNA").innerText=+statsContainer.querySelector("#hitsNA").innerText+notWinning;
+    statsContainer.querySelector("#hitsExtraLame").innerText = +statsContainer.querySelector("#hitsExtraLame").innerText + noMatches;
+    statsContainer.querySelector("#hitsNA").innerText = +statsContainer.querySelector("#hitsNA").innerText + notWinning;
 
     saveValues();
-    
-    
-    
+
+
+
     const end = performance.now();
     const duration = end - start;
     console.log(`Lottery took ${duration} milliseconds to run ${numberOfGames} times`);
 
-});
+}
+
+
 
 function updateMonetaryDom(winnings, gamesPlayed) {
     if (winnings > 0) {
@@ -264,7 +270,7 @@ function saveValues() {
     data['total-winnings'] = totalWinningsDiv.textContent;
     data['total-ticket-cost'] = totalTicketCost.textContent;
     data['net-winnings'] = netWinnings.textContent;
- 
+
     localStorage.setItem('lotteryData', JSON.stringify(data));
 }
 
@@ -283,14 +289,14 @@ function loadValues() {
 
         selectNumbers.forEach((select) => {
             let value = data[select.id]
-            
+
             select.value = value;
-            if(select.id == "extra1" || select.id == "extra2"){
+            if (select.id == "extra1" || select.id == "extra2") {
                 userSelectedExtraNumbers.push(+value);
-            }else{
+            } else {
                 userSelectedMainNumbers.push(+value);
             }
-            
+
         });
 
         statsValues.forEach((stat) => {
