@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" type="text/css" href="lottery.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="game.js"></script>
     <title>Info</title>
 </head>
 <body>
@@ -17,9 +18,12 @@
     </div>
 <div class="container">
 
+<div class="row-100">
 
-    <p>One ticket costs € 2</p>
-    <p></p>
+  <p>One ticket costs € 2</p>
+</div>
+
+
     <table>
         <thead>
           <tr>
@@ -110,9 +114,20 @@
     </div>
 
 <div class="container">
-    <button class="btn-danger" id="save-del-btn">Delete saved data</button>
+    <button class="btn" id="save-del-btn">Delete saved data</button>
 </div>
 
-<script src="info.js"></script>
+<script>
+  const delSaveBtn = document.getElementById("save-del-btn")
+
+delSaveBtn.addEventListener("click", deleteSave);
+
+function deleteSave(){
+   if(window.confirm("Do you want to delete saved statistics and other saved data?")){
+    localStorage.removeItem("lotteryV2");
+    window.location.reload();
+   }
+}
+</script>
 </body>
 </html>

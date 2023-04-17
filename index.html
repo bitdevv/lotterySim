@@ -1,98 +1,136 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Lottery Simulator</title>
-    <link rel="stylesheet" type="text/css" href="lottery.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="module" src="lottery.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script type="module" src="game.js"></script>
+
+
+    <title>Document</title>
 </head>
 
 <body>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="info.html">Info</a>
-    </nav>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="info.html">Info</a>
+        </nav>
+    </header>
 
-    <div class="player-selection">
+    <div class="container" id="userNumbers">
+        <div class="container" id="main">
+            <h5>
+                Main Numbers
+            </h5>
+            <div> <select disabled name="main0" id="user-main0"></select> </div>
+            <div> <select disabled name="main1" id="user-main1"></select> </div>
+            <div> <select disabled name="main2" id="user-main2"></select> </div>
+            <div> <select disabled name="main3" id="user-main3"></select> </div>
+            <div> <select disabled name="main4" id="user-main4"></select> </div>
+        </div>
 
-        <div class="title">Select Your Ticket Numbers</div>
-        <div id="container" class="container player-numbers">
-            <label>Main Numbers:</label>
-            <select class="select-number" id="main1"></select>
-            <select class="select-number" id="main2"></select>
-            <select class="select-number" id="main3"></select>
-            <select class="select-number" id="main4"></select>
-            <select class="select-number" id="main5"></select>
-            <label>Extra Numbers:</label>
-            <select class="select-number" id="extra1"></select>
-            <select class="select-number" id="extra2"></select>
-            <button class="button" id="generate">Select new random numbers</button>
+        <div class="container" id="extra">
+            <h5>Extra Numbers</h5>
+            <div> <select disabled name="extra0" id="user-extra0"></select> </div>
+            <div> <select disabled name="extra0" id="user-extra1"></select> </div>
+
         </div>
     </div>
-    <div id="stats-container" class="container stats-container">
-        <div class="match-title">5+2: <div class="match-value" id="hits52">0</div>
+    <button class="btn w100" id="generateUserNumbers">Generate New Numbers</button>
+
+
+    <div class="container stats" id="stats">
+
+        <h3 class="row-100 container-title">Statistics</h3>
+
+
+
+        <div class="border row">5+2<div class="stat-value" id="stats-52">0</div>
         </div>
-        <div class="match-title">5+1: <div class="match-value" id="hits51">0</div>
+        <div class="border row">5+1<div class="stat-value" id="stats-51">0</div>
         </div>
-        <div class="match-title">5+0: <div class="match-value" id="hits50">0</div>
+        <div class="border row">5+0<div class="stat-value" id="stats-50">0</div>
         </div>
-        <div class="match-title">4+2: <div class="match-value" id="hits42">0</div>
+        <div class="border row">4+2<div class="stat-value" id="stats-42">0</div>
         </div>
-        <div class="match-title">4+1: <div class="match-value" id="hits41">0</div>
+        <div class="border row">4+1<div class="stat-value" id="stats-41">0</div>
         </div>
-        <div class="match-title">3+2: <div class="match-value" id="hits32">0</div>
+        <div class="border row">4+0<div class="stat-value" id="stats-40">0</div>
         </div>
-        <div class="match-title">4+0: <div class="match-value" id="hits40">0</div>
+        <div class="border row">3+2<div class="stat-value" id="stats-32">0</div>
         </div>
-        <div class="match-title">2+2: <div class="match-value" id="hits22">0</div>
+        <div class="border row">3+1<div class="stat-value" id="stats-31">0</div>
         </div>
-        <div class="match-title">3+1: <div class="match-value" id="hits31">0</div>
+        <div class="border row">3+0<div class="stat-value" id="stats-30">0</div>
         </div>
-        <div class="match-title">3+0: <div class="match-value" id="hits30">0</div>
+        <div class="border row">2+2<div class="stat-value" id="stats-22">0</div>
         </div>
-        <div class="match-title">1+2: <div class="match-value" id="hits12">0</div>
+        <div class="border row">2+1<div class="stat-value" id="stats-21">0</div>
         </div>
-        <div class="match-title">2+1: <div class="match-value" id="hits21">0</div>
+        <div class="border row">1+2<div class="stat-value" id="stats-12">0</div>
         </div>
-        <div class="match-title">0+0: <div class="match-value" id="hitsExtraLame">0</div>
+        <div class="border row">0+0<div class="stat-value" id="stats-00">0</div>
         </div>
-        <div>Not winning: <div id="hitsNA">0</div>
+
+        <div class="border row">Not winning<div class="stat-value" id="stats-NA">0</div>
         </div>
-        <div>Games played: <div id="gamesPlayed">0</div>
+        <div class="border row">Total Won<div class="stat-value" id="stats-totalWin">0</div>
         </div>
-    </div>
-    <div class="container stats-container">
-        <div>Total winnings €: <div id="total-winnings">0</div>
+        <div class="border row">Total Ticket Cost<div class="stat-value" id="stats-totalTicketCost">0</div>
         </div>
-        <div>Total ticket cost €: <div id="total-ticket-cost">0</div>
+        <div class="border row">Total Games<div class="stat-value" id="stats-totalGames">0</div>
         </div>
-        <div>Net winnings €: <div id="net-winnings">0</div>
+        <div class="border row">Net Won<div class="stat-value" id="stats-netWinnings">0</div>
         </div>
     </div>
 
     <div class="container">
-        <button id="generate-btn">Play lottery once</button>
-
-        <div id="auto-generator">
-            <input type="number" id="auto-gen-amount" value="10">
-            <button id="start-auto-gen">Play lottery selected amount of times </button>
+        <div class="row-100">
+            <button class="btn w100" id="playOnceBtn">Play lottery once</button>
         </div>
-
+        <div class="container">
+            <input type="number" id="playAmount" value="10">
+            <button class="btn" id="playManyTimesBtn">Play lottery x timers</button>
+        </div>
     </div>
 
+    <div class="container">
+        <div id="winningNumbers">
+            <div id="drawMainNumbers" class="container">
+                <h5>
 
-    <div id="lottery-container" class="container">
-        <label>Main Numbers:</label>
-        <div class="number main" id="main1">0</div>
-        <div class="number main" id="main2">0</div>
-        <div class="number main" id="main3">0</div>
-        <div class="number main" id="main4">0</div>
-        <div class="number main" id="main5">0</div>
-        <label>Extra Numbers:</label>
-        <div class="number extra" id="extra1">0</div>
-        <div class="number extra" id="extra2">0</div>
+                    Main numbers
+                </h5>
+                <div class="number" id="main0"> </div>
+                <div class="number" id="main1"> </div>
+                <div class="number" id="main2"> </div>
+                <div class="number" id="main3"> </div>
+                <div class="number" id="main4"> </div>
+            </div>
+            <div id="drawExtraNumbers" class="container">
+                <h5>
+
+                    Extra numbers
+                </h5>
+                <div class="number" id="extra0"> </div>
+                <div class="number" id="extra1"> </div>
+
+            </div>
+
+        </div>
     </div>
+
+    <footer>
+        <div id="runTime"> - </div>
+
+    </footer>
+
 
 </body>
 
