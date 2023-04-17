@@ -190,12 +190,12 @@ function generateNumbers(userNumbers) {
     userNumbers.main = [];
     userNumbers.extra = [];
     for (let index = 0; index < 5; index++) {
-        let generatedNumber = util.generateRandomNumber(1, util.maxNumber.main, userNumbers.main);
+        util.generateRandomNumber(1, util.maxNumber.main, userNumbers.main);
 
     }
     //Generate 2 extra numbers
     for (let index = 0; index < 2; index++) {
-        let generatedNumber = util.generateRandomNumber(1, util.maxNumber.extra, userNumbers.extra);
+        util.generateRandomNumber(1, util.maxNumber.extra, userNumbers.extra);
 
     }
 }

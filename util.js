@@ -60,7 +60,11 @@ export const monetaryData = {
 export function generateRandomNumber(min, max, selectedNumbers) {
     var randomNum = 0;
     do {
-        randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+        //Standard implementation
+        //randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+
+        //Optimized "fast"
+        randomNum = (Math.random() * (max - min + 1) | 0) + min;
     } while (selectedNumbers.indexOf(randomNum) !== -1);
 
     selectedNumbers.push(randomNum);
