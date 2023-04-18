@@ -11,7 +11,7 @@ const playOnceBtn = document.getElementById("playOnceBtn");
 const playManyTimesBtn = document.getElementById("playManyTimesBtn");
 const winningNumbersDiv = document.getElementById("winningNumbers");
 const runTimeStats = document.getElementById("runTime");
-
+let stopMatchValue = "52";
 
 //Initializing
 
@@ -30,6 +30,25 @@ if (load()) {
     updateUserSelectedNumbers(true);
 }
 
+//
+gamesToPlay.addEventListener("change", setTimesToPlayBtnText);
+setTimesToPlayBtnText();
+//populate validMatches select
+const whenStopSelect = document.getElementById("whenStop")
+
+for (const value of util.validMatches) {
+    let text = value[0] + "+" + value[1]
+    let option = document.createElement("option");
+    option.id = "stop-" + value;
+    option.value = value;
+    option.textContent = text;
+    whenStopSelect.appendChild(option)
+}
+
+whenStopSelect.addEventListener('change', function(){
+    stopMatchValue = whenStopSelect.value;
+    setTimesToPlayBtnText();
+});
 //Logig and other code
 
 
@@ -41,15 +60,20 @@ playOnceBtn.addEventListener('click', function () {
     updateWinningNumbersDom();
     updateStatsDom();
     save();
+    console.log("stopping for", stopMatchValue);
 });
 
 //Play many times
 
 playManyTimesBtn.addEventListener('click', function () {
     const start = performance.now();
-    for (let index = 0; index < gamesToPlay.value; index++) {
+    let index;
+    for (index = 0; index < gamesToPlay.value; index++) {
         generateNumbers(util.drawNumbers);
-        evaluateLotteryGame();
+        if(evaluateLotteryGame()){
+            break;
+        }
+        
 
     }
     updateWinningNumbersDom();
@@ -57,14 +81,17 @@ playManyTimesBtn.addEventListener('click', function () {
     save();
     const end = performance.now();
     const duration = end - start;
-    let times = gamesToPlay.value.toLocaleString()
-    runTimeStats.innerText = `Lottery took ${duration} milliseconds to run ${times} times`;
+
+    runTimeStats.innerText = `Lottery took ${duration} milliseconds to run ${index.toLocaleString()} times`;
     //console.log(`Lottery took ${duration} milliseconds to run ${gamesToPlay.value} times`);
 });
 
 
 //Methods
 
+function setTimesToPlayBtnText(){
+    playManyTimesBtn.textContent  = 'Play up to ' + Number(gamesToPlay.value).toLocaleString()+' times or stop on ' + stopMatchValue[0] + '+' + stopMatchValue[1] + ' match' 
+}
 
 function updateStatsDom() {
     for (let key in util.statistics) {
@@ -110,6 +137,7 @@ function evaluateLotteryGame() {
     util.statistics.totalTicketCost += util.monetaryData.ticketCost;
     util.statistics['totalGames']++;
 
+    return matchCode == stopMatchValue;
 
 }
 

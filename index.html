@@ -24,6 +24,12 @@
     </header>
 
     <div class="container" id="userNumbers">
+        <div class="row-100">
+            <h5>
+                Your Ticket numbers
+            </h5>
+        </div>
+
         <div class="container" id="main">
             <h5>
                 Main Numbers
@@ -95,13 +101,26 @@
             <button class="btn w100" id="playOnceBtn">Play lottery once</button>
         </div>
         <div class="container">
-            <input type="number" id="playAmount" value="10">
+            <div class="row-100">
+                <h5>Select how many times to play lottery and desired winning combination</h5>
+            </div>
+            <div class="row-100">
+                <input type="number" id="playAmount" value="10">
+                <label for="whenStop">Stop on prize</label>
+                <select name="whenStop" id="whenStop"></select>
+            </div>
             <button class="btn" id="playManyTimesBtn">Play lottery x timers</button>
         </div>
     </div>
 
     <div class="container">
         <div id="winningNumbers">
+            <div class="row-100">
+
+                <h5>
+                    Winning lottery numbers:
+                </h5>
+            </div>
             <div id="drawMainNumbers" class="container">
                 <h5>
 

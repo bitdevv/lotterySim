@@ -57,6 +57,22 @@ export const monetaryData = {
     '21': 11
 }
 
+export const validMatches = [
+    "52",
+    "51",
+    "50",
+    "42",
+    "41",
+    "32",
+    "40",
+    "22",
+    "31",
+    "30",
+    "12",
+    "21"
+]
+
+
 export function generateRandomNumber(min, max, selectedNumbers) {
     var randomNum = 0;
     do {
