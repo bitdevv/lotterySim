@@ -116,6 +116,7 @@ h5{
   }
   
   input[type="number"] {
+    width: 7rem;
     appearance: none; /* Remove default arrow buttons */
     background-color: #fff; /* White background */
     border: 2px solid #6450bd; /* Green border */
