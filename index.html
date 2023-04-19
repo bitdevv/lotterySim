@@ -24,13 +24,13 @@
     </header>
 
     <div class="container" id="userNumbers">
-        <div class="row-100">
+        
+        <button class="btn w100" id="generateUserNumbers">Generate New Ticket Numbers</button>
+        <div class="row-100 border">
             <h5>
                 Your Ticket numbers
             </h5>
         </div>
-
-        <button class="btn w100" id="generateUserNumbers">Generate New Ticket Numbers</button>
 
         
 
@@ -67,7 +67,7 @@
 
 
         <h3 class="row-100 container-title btn" id="statsText">Statistics</h3>
-        <div class="container stats w100 collapsible" id="additionalStats">
+        <div class="container w100 collapsible" id="additionalStats">
             <div class="border row">5+2<div class="stat-value" id="stats-52">0</div>
             </div>
             <div class="border row">5+1<div class="stat-value" id="stats-51">0</div>
@@ -119,23 +119,25 @@
                 <div id="winningNumbers">
                     <div class="row-100">
 
-                        <h5>
-                            Winning lottery numbers:
+                        <h5 class=" w100 border">
+                            Winning lottery numbers
                         </h5>
                     </div>
-                    <div id="drawMainNumbers" class="container">
-                        <h5>
+                    <div class="container">
 
-                            Main numbers
-                        </h5>
-                        <div class="number" id="main0"> </div>
-                        <div class="number" id="main1"> </div>
-                        <div class="number" id="main2"> </div>
-                        <div class="number" id="main3"> </div>
-                        <div class="number" id="main4"> </div>
+                        <div id="drawMainNumbers" class="container">
+                            <h5 class="w100"> 
+                                Main numbers
+                            </h5>
+                            <div class="number" id="main0"> </div>
+                            <div class="number" id="main1"> </div>
+                            <div class="number" id="main2"> </div>
+                            <div class="number" id="main3"> </div>
+                            <div class="number" id="main4"> </div>
+                        </div>
                     </div>
                     <div id="drawExtraNumbers" class="container">
-                        <h5>
+                        <h5 class="w100">
 
                             Extra numbers
                         </h5>
@@ -148,13 +150,13 @@
             </div>
         </div>
         <div class="container">
-            <div class="row-100">
+            <div class="row-100 border">
                 <h5>Select how many times to play lottery and desired winning combination</h5>
             </div>
             <div class="row-100">
                 <input type="number" id="playAmount" value="10">
                 <label for="whenStop">Stop on prize</label>
-                <select name="whenStop" id="whenStop"></select>
+                <select class="match-select" name="whenStop" id="whenStop"></select>
             </div>
             <button class="btn" id="playManyTimesBtn">Play lottery x timers</button>
         </div>

@@ -22,8 +22,9 @@ body{
 
 
 .stats {
-    margin: 20px;
-    padding: 20px;
+  margin-top: 10px;
+/*     margin: 20px;
+    padding: 20px; */
     border: 2px solid #ccc;
     border-radius: 5px;
     text-align: center;
@@ -72,7 +73,7 @@ h5{
     display: inline-block;
     width: 50px;
     height: 50px;
-    margin-right: 10px;
+    margin-right: 5px;
     border: 2px solid #ccc;
     border-radius: 50%;
     text-align: center;
@@ -144,7 +145,7 @@ h5{
     appearance: none; /* Remove default dropdown arrow */
     background-color: #fff; /* White background */
     border: 2px solid gold; /* Green border */
-
+    margin-right: 5px;
     font-size: 24px; /* Font size */
     padding: 10px; /* Padding */
     border-radius: 100%; /* Rounded corners */
@@ -217,4 +218,8 @@ table td:nth-child(4):before {
   .collapsible.active {
     max-height: 500px;
     transition: max-height 1.5s ease-in;
+  }
+
+  .match-select{
+    border-radius: 0.3rem;
   }
