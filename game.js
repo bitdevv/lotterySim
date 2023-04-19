@@ -59,6 +59,7 @@ playOnceBtn.addEventListener('click', function () {
     evaluateLotteryGame();
     updateWinningNumbersDom();
     updateStatsDom();
+    setTimesToPlayBtnText();
     save();
     console.log("stopping for", stopMatchValue);
 });
@@ -73,11 +74,10 @@ playManyTimesBtn.addEventListener('click', function () {
         if(evaluateLotteryGame()){
             break;
         }
-        
-
     }
     updateWinningNumbersDom();
     updateStatsDom();
+    setTimesToPlayBtnText();
     save();
     const end = performance.now();
     const duration = end - start;
@@ -86,6 +86,21 @@ playManyTimesBtn.addEventListener('click', function () {
     //console.log(`Lottery took ${duration} milliseconds to run ${gamesToPlay.value} times`);
 });
 
+let additionalStats = document.getElementById("additionalStats");
+let statsText = document.getElementById("statsText");
+statsText.addEventListener('click', function (){
+    if (additionalStats.style.display === "none") {
+        //additionalStats.style.display = "flex";
+
+    } else {
+        //additionalStats.style.display = "none";
+    }
+    if (additionalStats.classList.contains("active")) {
+        additionalStats.classList.remove("active");
+      } else {
+        additionalStats.classList.add("active");
+      }
+});
 
 //Methods
 
@@ -217,6 +232,8 @@ function populateUserSelects() {
 function generateNumbers(userNumbers) {
     userNumbers.main = [];
     userNumbers.extra = [];
+    
+    
     for (let index = 0; index < 5; index++) {
         util.generateRandomNumber(1, util.maxNumber.main, userNumbers.main);
 

@@ -31,27 +31,84 @@
         </div>
 
         <button class="btn w100" id="generateUserNumbers">Generate New Ticket Numbers</button>
-        <div class="container" id="main">
-            <h5>
-                Main Numbers
-            </h5>
-            <div> <select disabled name="main0" id="user-main0"></select> </div>
-            <div> <select disabled name="main1" id="user-main1"></select> </div>
-            <div> <select disabled name="main2" id="user-main2"></select> </div>
-            <div> <select disabled name="main3" id="user-main3"></select> </div>
-            <div> <select disabled name="main4" id="user-main4"></select> </div>
+
+        
+
+        <div class="container w100" id="main">
+            <div class="container">
+                <h5 class="w100">
+                    Main Numbers
+                </h5>
+                <div class="container">
+                    <div> <select disabled name="main0" id="user-main0"></select> </div>
+                    <div> <select disabled name="main1" id="user-main1"></select> </div>
+                    <div> <select disabled name="main2" id="user-main2"></select> </div>
+                    <div> <select disabled name="main3" id="user-main3"></select> </div>
+                    <div> <select disabled name="main4" id="user-main4"></select> </div>
+                </div>
+            </div>
+            <div class="container">
+
+                <div class="w100" id="extra">
+                    <div class="container">
+                        <h5>Extra Numbers</h5>
+                    </div>
+                    <div class=" container">
+                        <div> <select disabled name="extra0" id="user-extra0"></select> </div>
+                        <div> <select disabled name="extra0" id="user-extra1"></select> </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="container" id="extra">
-            <h5>Extra Numbers</h5>
-            <div> <select disabled name="extra0" id="user-extra0"></select> </div>
-            <div> <select disabled name="extra0" id="user-extra1"></select> </div>
-
-        </div>
     </div>
 
+    <div class="container stats" id="stats">
 
-    
+
+        <h3 class="row-100 container-title btn" id="statsText">Statistics</h3>
+        <div class="container stats w100 collapsible" id="additionalStats">
+            <div class="border row">5+2<div class="stat-value" id="stats-52">0</div>
+            </div>
+            <div class="border row">5+1<div class="stat-value" id="stats-51">0</div>
+            </div>
+            <div class="border row">5+0<div class="stat-value" id="stats-50">0</div>
+            </div>
+            <div class="border row">4+2<div class="stat-value" id="stats-42">0</div>
+            </div>
+            <div class="border row">4+1<div class="stat-value" id="stats-41">0</div>
+            </div>
+            <div class="border row">4+0<div class="stat-value" id="stats-40">0</div>
+            </div>
+            <div class="border row">3+2<div class="stat-value" id="stats-32">0</div>
+            </div>
+            <div class="border row">3+1<div class="stat-value" id="stats-31">0</div>
+            </div>
+            <div class="border row">3+0<div class="stat-value" id="stats-30">0</div>
+            </div>
+            <div class="border row">2+2<div class="stat-value" id="stats-22">0</div>
+            </div>
+            <div class="border row">1+2<div class="stat-value" id="stats-12">0</div>
+            </div>
+            <div class="border row">2+1<div class="stat-value" id="stats-21">0</div>
+            </div>
+            <div class="border row">0+0<div class="stat-value" id="stats-00">0</div>
+            </div>
+            <div class="border row">Not winning<div class="stat-value" id="stats-NA">0</div>
+            </div>
+            <div class="border row">Total Games<div class="stat-value" id="stats-totalGames">0</div>
+            </div>
+        </div>
+
+        <div class="border row">Ticket Cost€<div class="stat-value" id="stats-totalTicketCost">0</div>
+        </div>
+        <div class="border row">Total Won€<div class="stat-value" id="stats-totalWin">0</div>
+        </div>
+        <div class="border row">Net Won€<div class="stat-value" id="stats-netWinnings">0</div>
+        </div>
+
+    </div>
+
 
     <div class="container">
         <div class="row-100">
@@ -61,14 +118,14 @@
             <div class="container">
                 <div id="winningNumbers">
                     <div class="row-100">
-        
+
                         <h5>
                             Winning lottery numbers:
                         </h5>
                     </div>
                     <div id="drawMainNumbers" class="container">
                         <h5>
-        
+
                             Main numbers
                         </h5>
                         <div class="number" id="main0"> </div>
@@ -79,14 +136,14 @@
                     </div>
                     <div id="drawExtraNumbers" class="container">
                         <h5>
-        
+
                             Extra numbers
                         </h5>
                         <div class="number" id="extra0"> </div>
                         <div class="number" id="extra1"> </div>
-        
+
                     </div>
-        
+
                 </div>
             </div>
         </div>
@@ -102,56 +159,12 @@
             <button class="btn" id="playManyTimesBtn">Play lottery x timers</button>
         </div>
     </div>
-    
+
     <div class="container" id="runTime"> - </div>
+
+
+
     
-
-
-    <div class="container stats" id="stats">
-
-        <h3 class="row-100 container-title">Statistics</h3>
-
-
-
-        <div class="border row">5+2<div class="stat-value" id="stats-52">0</div>
-        </div>
-        <div class="border row">5+1<div class="stat-value" id="stats-51">0</div>
-        </div>
-        <div class="border row">5+0<div class="stat-value" id="stats-50">0</div>
-        </div>
-        <div class="border row">4+2<div class="stat-value" id="stats-42">0</div>
-        </div>
-        <div class="border row">4+1<div class="stat-value" id="stats-41">0</div>
-        </div>
-        <div class="border row">4+0<div class="stat-value" id="stats-40">0</div>
-        </div>
-        <div class="border row">3+2<div class="stat-value" id="stats-32">0</div>
-        </div>
-        <div class="border row">3+1<div class="stat-value" id="stats-31">0</div>
-        </div>
-        <div class="border row">3+0<div class="stat-value" id="stats-30">0</div>
-        </div>
-        <div class="border row">2+2<div class="stat-value" id="stats-22">0</div>
-        </div>
-        <div class="border row">1+2<div class="stat-value" id="stats-12">0</div>
-        </div>
-        <div class="border row">2+1<div class="stat-value" id="stats-21">0</div>
-        </div>
-        <div class="border row">0+0<div class="stat-value" id="stats-00">0</div>
-        </div>
-
-        <div class="border row">Not winning<div class="stat-value" id="stats-NA">0</div>
-        </div>
-        <div class="border row">Total Games<div class="stat-value" id="stats-totalGames">0</div>
-        </div>
-        <div class="border row">Ticket Cost€<div class="stat-value" id="stats-totalTicketCost">0</div>
-        </div>
-        <div class="border row">Total Won€<div class="stat-value" id="stats-totalWin">0</div>
-        </div>
-        <div class="border row">Net Won€<div class="stat-value" id="stats-netWinnings">0</div>
-        </div>
-
-    </div>
 
     <footer>
 

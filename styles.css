@@ -13,7 +13,6 @@ body{
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 10px;
 }
 
 .border {
@@ -30,7 +29,10 @@ body{
     text-align: center;
 }
 
-
+.debug{
+  border: 1px solid red;
+  margin: 1px;
+}
 
 .row {
     flex-grow: 1;
@@ -205,4 +207,14 @@ table td:nth-child(4):before {
   
   table td:nth-child(4) {
     text-align: left;
+  }
+
+  .collapsible {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.7s ease-out;
+  }
+  .collapsible.active {
+    max-height: 500px;
+    transition: max-height 1.5s ease-in;
   }
