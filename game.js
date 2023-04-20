@@ -61,7 +61,6 @@ playOnceBtn.addEventListener('click', function () {
     updateStatsDom();
     setTimesToPlayBtnText();
     save();
-    console.log("stopping for", stopMatchValue);
 });
 
 //Play many times
