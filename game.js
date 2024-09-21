@@ -110,9 +110,9 @@ playManyTimesBtn.addEventListener('click', function () {
 stopCheckbox.addEventListener("change", function() {
       setTimesToPlayBtnText();
       if(stopCheckbox.checked){
-        whenStopSelect.disabled = true
+        whenStopSelect.disabled = false
     }else{
-          whenStopSelect.disabled = false
+          whenStopSelect.disabled = true
 
       }
 
