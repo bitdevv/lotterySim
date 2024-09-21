@@ -85,7 +85,7 @@ playManyTimesBtn.addEventListener('click', function () {
 
         let moneyWon = ((util.statistics.netWinnings)-startMoney).toLocaleString()
         if (index < games && !endLoop) {
-            runTimeStats.innerText = `Games left: ${gamesLeft-=batchSize}. Money won so far:${moneyWon}€`;
+            runTimeStats.innerText = `Games left: ${(gamesLeft-=batchSize).toLocaleString()}. Money won so far:${moneyWon}€`;
             playManyTimesBtn.innerText = "Please wait"
             updateWinningNumbersDom();
             requestAnimationFrame(playGamesBatch); // Schedule next batch for next frame
@@ -98,7 +98,7 @@ playManyTimesBtn.addEventListener('click', function () {
             save();
 
             const end = performance.now();
-            const duration = end - start;
+            const duration = (end - start);
             runTimeStats.innerText = `${index.toLocaleString()} games took ${duration}ms and gained: ${moneyWon}€ `;
         }
     }
@@ -118,29 +118,6 @@ stopCheckbox.addEventListener("change", function() {
 
   });
 
-/* playManyTimesBtn.addEventListener('click', function () {
-    const start = performance.now();
-    let index;
-    
-    const userMainSet = new Set(util.userNumbers.main);
-    const userExtraSet = new Set(util.userNumbers.extra);
-
-    for (index = 0; index < gamesToPlay.value; index++) {
-        generateNumbers(util.drawNumbers);
-        if(evaluateLotteryGame(userMainSet, userExtraSet)){
-            break;
-        }
-    }
-    updateWinningNumbersDom();
-    updateStatsDom();
-    setTimesToPlayBtnText();
-    save();
-    const end = performance.now();
-    const duration = end - start;
-
-    runTimeStats.innerText = `Lottery took ${duration} milliseconds to run ${index.toLocaleString()} times`;
-    //console.log(`Lottery took ${duration} milliseconds to run ${gamesToPlay.value} times`);
-}); */
 
 let additionalStats = document.getElementById("additionalStats");
 let statsText = document.getElementById("statsText");
@@ -153,8 +130,10 @@ statsText.addEventListener('click', function (){
     }
     if (additionalStats.classList.contains("active")) {
         additionalStats.classList.remove("active");
-      } else {
+        statsText.textContent = "More statistics"
+    } else {
         additionalStats.classList.add("active");
+        statsText.textContent = "Less statistics"
       }
 });
 

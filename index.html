@@ -24,30 +24,33 @@
         </nav>
     </header>
 
-    <div class="container" id="userNumbers">
-        <button class="btn w100" id="generateUserNumbers">Generate new numbers</button>
-        <div class="row-100 border">
-            <h5>Your lottery numbers</h5>
-        </div>
-        <div class="container w100">
-            <div id="userNumbers">
-                <div class="container">
-                    <h5 class="w100">Main numbers</h5>
-                    <div class="number user" id="user-main0"> </div>
-                    <div class="number user" id="user-main1"> </div>
-                    <div class="number user" id="user-main2"> </div>
-                    <div class="number user" id="user-main3"> </div>
-                    <div class="number user" id="user-main4"> </div>
-                </div>
-                <div class="container">
-                    <h5 class="w100">Extra numbers</h5>
-                    <div class="number user" id="user-extra0"> </div>
-                    <div class="number user" id="user-extra1"> </div>
+    <div class="container  " id="userNumbers">
+        <div class="container light-border">
+
+            <button class="btn w100" id="generateUserNumbers">Generate new numbers</button>
+            <div class="row-100 border">
+                <h5>Your lottery numbers</h5>
+            </div>
+            <div class="container light-borderw100">
+                <div id="userNumbers">
+                    <div class="container">
+                        <h5 class="w100">Main numbers</h5>
+                        <div class="number user" id="user-main0"> </div>
+                        <div class="number user" id="user-main1"> </div>
+                        <div class="number user" id="user-main2"> </div>
+                        <div class="number user" id="user-main3"> </div>
+                        <div class="number user" id="user-main4"> </div>
+                    </div>
+                    <div class="container">
+                        <h5 class="w100">Extra numbers</h5>
+                        <div class="number user" id="user-extra0"> </div>
+                        <div class="number user" id="user-extra1"> </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="container">
+        <div class="container ">
+            <div class="container light-border">
 <!--                 <div class="row">
                     <h5 class="w100 border">Select number of games and desired winning combination</h5>
                 </div> -->
@@ -65,14 +68,14 @@
                         </label>
                         <select class="match-select" name="whenStop" id="whenStop"></select>
                     </div>
+                    <div class="container" id="runTime"> - </div>
                     <button class="btn w100" id="playManyTimesBtn">Play lottery x timers</button>
                 </div>
 
-                <div class="container" id="runTime"> - </div>
 
             </div>
 
-            <div class="container">
+            <div class="container light-border">
                 <div id="winningNumbers">
                     <div class="row-100">
 
@@ -108,14 +111,18 @@
 
         </div>
 
-        <div class="container stats" id="stats">
-            <h5 class="row-100 container-title btn" id="statsText">Statistics
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-arrow-down-up" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd"
-                        d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
-                </svg>
-            </h5>
+        <div class="container light-border" id="stats">
+            <h5 class="row-100 container-title btn" id="statsText">
+                More statistics</h5>
+            <div class="border row">Ticket Cost€<div class="stat-value" id="stats-totalTicketCost">0</div>
+        </div>
+
+
+        
+        <div class="border row">Total Won€<div class="stat-value" id="stats-totalWin">0</div>
+        </div>
+        <div class="border row">Net Won€<div class="stat-value" id="stats-netWinnings">0</div>
+        </div>
             <div class="container w100 collapsible" id="additionalStats">
                 <div class="border row">5+2<div class="stat-value" id="stats-52">0</div>
                 </div>
@@ -149,12 +156,7 @@
                 </div>
             </div>
 
-            <div class="border row">Ticket Cost€<div class="stat-value" id="stats-totalTicketCost">0</div>
-            </div>
-            <div class="border row">Total Won€<div class="stat-value" id="stats-totalWin">0</div>
-            </div>
-            <div class="border row">Net Won€<div class="stat-value" id="stats-netWinnings">0</div>
-            </div>
+     
 
         </div>
 
