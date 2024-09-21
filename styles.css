@@ -1,8 +1,5 @@
-*,
-*::before,
-*::after {
+*,*::before,*::after {
   box-sizing: border-box;
-
 }
 
 body{
@@ -38,6 +35,8 @@ body{
   border: 1px solid red;
   margin: 1px;
 }
+
+
 
 .row {
     flex-grow: 1;
