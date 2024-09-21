@@ -8,6 +8,7 @@ body{
   background-color: rgb(42, 42, 42);
   color:azure;
   font-family: 'Roboto', sans-serif;
+  
 }
 
 .container {
@@ -32,8 +33,7 @@ body{
 }
 
 .debug{
-  border: 1px solid red;
-  margin: 1px;
+  outline: 1px solid red;
 }
 
 
@@ -84,6 +84,17 @@ h5{
     font-size: 24px;
   }
 
+  .user{
+    border: 3px solid #838383;
+    background: #dfdfdf;
+    color: rgb(95, 52, 52);
+  }
+
+  .user:hover{
+    background: rgb(214, 239, 205);
+    transition: 200ms ease-in-out;
+  }
+
   .match {
     background-color: #4CAF50;
     color: #fff;
@@ -114,11 +125,11 @@ h5{
     box-shadow: 0 0 10px rgba(0,0,0,0.2); /* Box shadow on hover */
   }
   
-  .btn:active {
-    background-color: #3e8e41; /* Darker green background on click */
-    color: white; /* White text on click */
-    box-shadow: 0 0 5px rgba(0,0,0,0.2); /* Box shadow on click */
-    transform: translateY(2px); /* Move button down on click */
+  .btn:disabled {
+    background-color: #fff; 
+    color: red;
+    cursor: not-allowed;
+  
   }
 
   input[type="number"] {
@@ -150,7 +161,8 @@ h5{
     border: 2px solid gold; /* Green border */
     margin-right: 5px;
     font-size: 24px; /* Font size */
-    padding: 10px; /* Padding */
+    padding: .31rem; /* Padding */
+    padding-inline: 2rem;
     border-radius: 100%; /* Rounded corners */
     outline: none; /* No outline on focus */
     transition: border-color 0.2s ease-in-out; /* Transition on border color */
@@ -229,3 +241,23 @@ table td:nth-child(4):before {
   .match-select{
     border-radius: 0.3rem;
   }
+
+ 
+
+  .flex{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    
+  }
+
+  .flex > div {
+    flex: 1 1 48%; /* Makes divs take 50% width with space between */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertical alignment */
+    align-items: center; /* Horizontal alignment */
+    text-align: center;
+}
+  

@@ -88,16 +88,3 @@ export function generateRandomNumber(min, max, selectedNumbers) {
     return randomNum;
 }
 
-export function createAndAddSelect(generatedNumber, parentDiv){
-    let select = document.createElement("select");
-    for (var i = 1; i <= 50; i++) {
-        var option = document.createElement("option");
-        option.text = i;
-        option.value = i;
-        if(i == generatedNumber){
-            option.selected = true;
-        }
-        select.appendChild(option);
-      }
-      parentDiv.appendChild(select);
-}
