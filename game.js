@@ -158,6 +158,7 @@ function updateStatsDom() {
     }
 }
 
+const stats = util.statistics;
 function evaluateLotteryGame(userMainSet, userExtraSet) {
     let mainHits = 0;
     let extraHits = 0;
@@ -174,16 +175,16 @@ function evaluateLotteryGame(userMainSet, userExtraSet) {
     let matchCode = mainHits + '' + extraHits;
     //update numbers match stats
     if (mainHits + extraHits == 0) {
-        util.statistics[matchCode]++;
-        util.statistics['NA']++;
+        stats[matchCode]++;
+        stats['NA']++;
     } else {
-        if (util.statistics.hasOwnProperty(matchCode)) {
-            util.statistics[matchCode]++;
+        if (stats.hasOwnProperty(matchCode)) {
+            stats[matchCode]++;
             const winAmount = util.monetaryData[matchCode]
-            util.statistics.totalWin += winAmount;
-            util.statistics.netWinnings += winAmount;
+            stats.totalWin += winAmount;
+            stats.netWinnings += winAmount;
         } else {
-            util.statistics['NA']++;
+            stats['NA']++;
         }
 
     }
