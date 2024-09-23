@@ -4,7 +4,8 @@
 
 body{
   margin: auto;
-  width: 24rem;
+  max-width: 24rem;
+  padding-inline: 1rem;
   background-color: rgb(42, 42, 42);
   color:azure;
   font-family: 'Roboto', sans-serif;

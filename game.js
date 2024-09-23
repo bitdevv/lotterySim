@@ -88,6 +88,7 @@ playManyTimesBtn.addEventListener('click', function () {
             runTimeStats.innerText = `Games left: ${(gamesLeft-=batchSize).toLocaleString()}. Money won so far:${moneyWon}€`;
             playManyTimesBtn.innerText = "Please wait"
             updateWinningNumbersDom();
+            updateStatsDom();
             requestAnimationFrame(playGamesBatch); // Schedule next batch for next frame
         } else {
             // When done, re-enable the play button and update the DOM
