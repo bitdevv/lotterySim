@@ -14,7 +14,7 @@ let stopMatchValue = "52";
 const userNumbersDiv = document.getElementById("userNumbers");
 
 //Initializing
-
+util.generateStatsDom()
 //Generate numbers
 generateNumbers(util.userNumbers);
 //Draw user numbers
@@ -119,27 +119,6 @@ stopCheckbox.addEventListener("change", function() {
 
   });
 
-
-let additionalStats = document.getElementById("additionalStats");
-let statsText = document.getElementById("statsText");
-statsText.addEventListener('click', function (){
-    if (additionalStats.style.display === "none") {
-        //additionalStats.style.display = "flex";
-
-    } else {
-        //additionalStats.style.display = "none";
-    }
-    if (additionalStats.classList.contains("active")) {
-        additionalStats.classList.remove("active");
-        statsText.textContent = "More statistics"
-    } else {
-        additionalStats.classList.add("active");
-        statsText.textContent = "Less statistics"
-      }
-});
-
-//Methods
-
 function setTimesToPlayBtnText(){
 
     let text = `Play ${Number(gamesToPlay.value).toLocaleString()} games`
@@ -152,7 +131,6 @@ function setTimesToPlayBtnText(){
 
 function updateStatsDom() {
     for (let key in util.statistics) {
-        console.log("#stats-" + key)
         let div = statsDiv.querySelector("#stats-" + key);
         let value = util.statistics[key];
         div.textContent = value.toLocaleString();
